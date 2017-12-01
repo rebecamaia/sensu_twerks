@@ -1,0 +1,9 @@
+{
+  "handlers": {
+    "silencer": {
+      "type": "pipe",
+      "command": "python /etc/sensu/handlers/silencer.py",
+      "severities": ["critical"]
+      }
+    }
+}

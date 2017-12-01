@@ -1,0 +1,17 @@
+{
+  "checks":
+  { 
+    "vpn-process": {
+      "command": "check-process.rb -f /var/run/openvpn/pidfile.pid",
+      "subscribers": [
+        "subscriber"
+      ],
+      "interval": 10,
+      "refresh": 60,
+      "occurences": 3,
+      "standalone": true,
+      "handler": "silencer"
+    }
+
+  }
+}
