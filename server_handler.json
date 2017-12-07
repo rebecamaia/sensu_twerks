@@ -1,9 +1,29 @@
 {
   "handlers": {
+    "default": {
+      "type": "set",
+      "handlers": ["influxdb"]
+      },
+
+    "feeder": {
+      "type": "pipe",
+      "command": "python /etc/sensu/handlers/feeder.py"
+      },
+
     "silencer": {
       "type": "pipe",
       "command": "python /etc/sensu/handlers/silencer.py",
       "severities": ["critical"]
+      },
+
+   "influxdb": {
+      "type": "udp",
+      "socket": {
+        "host": "[REDACTED]",
+        "port": 8090
+      },
+      "mutator": "influxdb_line_protocol"
       }
     }
 }
+
