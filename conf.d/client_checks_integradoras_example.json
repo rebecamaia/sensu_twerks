@@ -1,0 +1,56 @@
+{
+  "checks": {
+
+    "http-sigaa": {
+      "command": "python /etc/sensu/plugins/check-http.py https://preproducao-ufg.esig.com.br/sigaa",
+      "subscribers": [
+        "integradoras"
+      ],
+      "interval": 10,
+      "refresh": 60,
+      "standalone": true,
+      "handler": "influxdb",
+      "occurences": 3
+    },
+
+    "http-sipac": {
+      "command": "python /etc/sensu/plugins/check-http.py https://preproducao-ufg.esig.com.br/sipac",
+      "subscribers": [
+        "integradoras"
+      ],
+      "interval": 10,
+      "standalone": true,
+      "refresh": 60,
+      "handler": "influxdb",
+      "occurences": 3
+    },
+
+    "http-admin": {
+      "command": "python /etc/sensu/plugins/check-http.py https://preproducao-ufg.esig.com.br/admin",
+      "subscribers": [
+        "integradoras"
+      ],
+      "interval": 10,
+      "standalone": true,
+      "refresh": 60,
+      "handler": "influxdb",
+      "occurences": 3
+    },
+
+    "vpn-process": {
+      "type": "metric",
+      "command": "check-process.rb -f /var/run/openvpn/ufg.pid",
+      "subscribers": [
+        "integradoras"
+      ],
+      "interval": 10,
+      "refresh": 60,
+      "occurences": 3,
+      "standalone": true,
+      "handlers": ["feeder","silencer","influxdb"],
+      "occurences": 1
+    }
+
+  }
+}
+                                                                                                                                                              55,1          Bot

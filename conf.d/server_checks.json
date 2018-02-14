@@ -1,0 +1,57 @@
+{
+  "checks": {
+
+    "load-metric": {
+      "type": "metric",
+       "command": "/opt/sensu/embedded/bin/metrics-load.rb",
+       "interval": 10,
+       "subscribers": ["instituicoes","integradoras"],
+       "handlers": ["influxdb"]
+     },
+
+    "memory-metric": {
+      "type": "metric",
+       "command": "/opt/sensu/embedded/bin/metrics-memory-percent.rb",
+       "interval": 10,
+       "subscribers": ["instituicoes","integradoras"],
+       "handlers": ["influxdb"]
+     },
+
+    "disk-metric": {
+      "type": "metric",
+       "command": "/opt/sensu/embedded/bin/metrics-cpu.rb",
+       "interval": 10,
+       "subscribers": ["instituicoes","integradoras"],
+       "handlers": ["influxdb"]
+     },
+
+    "load": {
+      "command": "check-load.rb -w 2,1.5,1.5 -c 3,4,4",
+      "subscribers": [
+        "instituicoes", "integradoras"
+      ],
+      "interval": 10,
+      "handlers": ["influxdb"]
+    },
+
+    "disk": {
+      "command": "check-disk-usage.rb -w 85 -c 90",
+      "subscribers": [
+        "instituicoes","integradoras"
+      ],
+      "interval": 10,
+      "handlers": ["influxdb"]
+    },
+
+    "memory": {
+      "command": "check-memory.rb -w 70 -c 85",
+      "subscribers": [
+        "insituicoes","integradoras"
+      ],
+      "interval": 10,
+      "handlers": ["influxdb"]
+    }
+
+  }
+}
+                                                                                                                                                              56,1          Bot

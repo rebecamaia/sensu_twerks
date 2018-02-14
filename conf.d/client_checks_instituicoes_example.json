@@ -1,0 +1,12 @@
+{
+  "checks": {
+      "check-jboss": {
+           "command": "/etc/sensu/plugins/check-jboss.sh implant",
+           "subscribers": [
+              "instituicoes"
+            ],
+            "interval": 10,
+            "standalone": true
+    }
+  }
+}

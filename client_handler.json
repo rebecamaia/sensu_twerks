@@ -1,0 +1,11 @@
+SELECT 'alter table '|| schema_name ||'owner TO sipac;' 
+FROM information_schema.schemata
+WHERE schema_name NOT LIKE 'pg_%' AND schema_name NOT IN ('information_schema');
+
+
+
+SELECT 'ALTER TABLE OWNER ' || n.nspname || '.' || c.relname || ' TO sipac;'
+FROM pg_catalog.pg_class c 
+LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN ('r','S') AND n.nspname NOT IN ('pg_catalog', 'information_schema', 'pg_toast')
+ORDER BY c.relname;
