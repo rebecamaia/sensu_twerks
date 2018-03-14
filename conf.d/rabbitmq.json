@@ -1,9 +1,0 @@
-{
-  "rabbitmq": {
-    "host": "sensu.esig.com.br",
-    "port": 5672,
-    "vhost": "/sensu",
-    "user": "sensu",
-    "password": "sensu"
-  }
-}

@@ -9,6 +9,9 @@ def get_rx(statistics_path):
     except OSError:
         print "Permission Denied!"
         sys.exit(1)
+    except IOError:
+        print "Interface Unavailable!"
+        sys.exit(1)
     return result
 
 def main():
